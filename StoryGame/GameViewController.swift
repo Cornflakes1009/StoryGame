@@ -1,0 +1,73 @@
+//
+//  ViewController.swift
+//  StoryGame
+//
+//  Created by Harold Davidson on 4/22/25.
+//
+
+import UIKit
+
+class GameViewController: UIViewController {
+
+    let storyLabel = UILabel()
+    let optionsStack = UIStackView()
+
+    var currentSceneID = "start"
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .black
+        setupUI()
+        showScene(id: currentSceneID)
+    }
+
+    func setupUI() {
+        storyLabel.numberOfLines = 0
+        storyLabel.textColor = .white
+        storyLabel.font = UIFont.monospacedSystemFont(ofSize: 18, weight: .regular)
+        storyLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        optionsStack.axis = .vertical
+        optionsStack.spacing = 12
+        optionsStack.translatesAutoresizingMaskIntoConstraints = false
+
+        view.addSubview(storyLabel)
+        view.addSubview(optionsStack)
+
+        NSLayoutConstraint.activate([
+            storyLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            storyLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            storyLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+
+            optionsStack.topAnchor.constraint(equalTo: storyLabel.bottomAnchor, constant: 30),
+            optionsStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            optionsStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+        ])
+    }
+
+    func showScene(id: String) {
+        guard let scene = scenes[id] else { return }
+
+        currentSceneID = id
+        storyLabel.text = scene.text
+
+        optionsStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
+
+        for option in scene.options {
+            let button = UIButton(type: .system)
+            button.setTitle(option.title, for: .normal)
+            button.titleLabel?.font = UIFont.monospacedSystemFont(ofSize: 18, weight: .medium)
+            button.backgroundColor = .darkGray
+            button.setTitleColor(.white, for: .normal)
+            button.layer.cornerRadius = 8
+            //button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
+            button.addAction(UIAction { [weak self] _ in
+                self?.showScene(id: option.nextSceneID)
+            }, for: .touchUpInside)
+
+            optionsStack.addArrangedSubview(button)
+        }
+    }
+}
+
+
