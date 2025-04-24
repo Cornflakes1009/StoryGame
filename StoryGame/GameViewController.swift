@@ -18,6 +18,11 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .black
         setupUI()
+        
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         showScene(id: currentSceneID)
     }
 
@@ -49,7 +54,6 @@ class GameViewController: UIViewController {
         guard let scene = scenes[id] else { return }
 
         currentSceneID = id
-        storyLabel.text = scene.text
 
         optionsStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
 
@@ -60,12 +64,34 @@ class GameViewController: UIViewController {
             button.backgroundColor = .darkGray
             button.setTitleColor(.white, for: .normal)
             button.layer.cornerRadius = 8
-            //button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
             button.addAction(UIAction { [weak self] _ in
                 self?.showScene(id: option.nextSceneID)
             }, for: .touchUpInside)
 
             optionsStack.addArrangedSubview(button)
+        }
+        
+        typeTextOnLabel(label: storyLabel, text: scene.text)
+    }
+    
+    func typeTextOnLabel(label: UILabel, text: String) {
+        label.text = ""
+        for char in text {
+            var delayTime = 0.03
+            
+            if char == " " {
+                delayTime = 0.12
+            } else if char == "." || char == "," || char == "!" || char == "?" {
+                delayTime = 0.35
+            }
+            
+            if char == "$" {
+                delayTime = 0.35
+            } else {
+                label.text! += "\(char)"
+            }
+            
+            RunLoop.current.run(until: Date()+delayTime)
         }
     }
 }
