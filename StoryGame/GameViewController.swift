@@ -44,7 +44,7 @@ class GameViewController: UIViewController {
             storyLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             storyLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
 
-            optionsStack.topAnchor.constraint(equalTo: storyLabel.bottomAnchor, constant: 30),
+            optionsStack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             optionsStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             optionsStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         ])
