@@ -29,7 +29,9 @@ class GameViewController: UIViewController {
     func setupUI() {
         storyLabel.numberOfLines = 0
         storyLabel.textColor = .white
-        storyLabel.font = UIFont.monospacedSystemFont(ofSize: 18, weight: .regular)
+        //storyLabel.font = UIFont.monospacedSystemFont(ofSize: 18, weight: .regular)
+        storyLabel.font = UIFont(name: "PressStart2P-Regular", size: 14)
+
         storyLabel.translatesAutoresizingMaskIntoConstraints = false
 
         optionsStack.axis = .vertical
