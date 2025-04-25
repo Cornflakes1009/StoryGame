@@ -29,7 +29,9 @@ class GameViewController: UIViewController {
     func setupUI() {
         storyLabel.numberOfLines = 0
         storyLabel.textColor = .white
-        storyLabel.font = UIFont.monospacedSystemFont(ofSize: 18, weight: .regular)
+        //storyLabel.font = UIFont.monospacedSystemFont(ofSize: 18, weight: .regular)
+        storyLabel.font = UIFont(name: "PressStart2P-Regular", size: 14)
+
         storyLabel.translatesAutoresizingMaskIntoConstraints = false
 
         optionsStack.axis = .vertical
@@ -44,7 +46,7 @@ class GameViewController: UIViewController {
             storyLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             storyLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
 
-            optionsStack.topAnchor.constraint(equalTo: storyLabel.bottomAnchor, constant: 30),
+            optionsStack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             optionsStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             optionsStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         ])
