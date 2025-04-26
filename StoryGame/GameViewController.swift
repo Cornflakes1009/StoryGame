@@ -77,23 +77,31 @@ class GameViewController: UIViewController {
     }
     
     func typeTextOnLabel(label: UILabel, text: String) {
-        label.text = ""
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 12 // Adjust this value for line height
+
+        let baseAttributes: [NSAttributedString.Key: Any] = [
+            .font: label.font ?? UIFont.systemFont(ofSize: 14),
+            .foregroundColor: label.textColor ?? .white,
+            .paragraphStyle: paragraphStyle
+        ]
+
+        let attributedString = NSMutableAttributedString()
+
         for char in text {
             var delayTime = 0.03
-            
+
             if char == " " {
                 delayTime = 0.12
-            } else if char == "." || char == "," || char == "!" || char == "?" {
+            } else if [".", ",", "!", "?", "$"].contains(char) {
                 delayTime = 0.35
             }
-            
-            if char == "$" {
-                delayTime = 0.35
-            } else {
-                label.text! += "\(char)"
-            }
-            
-            RunLoop.current.run(until: Date()+delayTime)
+
+            let charString = NSAttributedString(string: String(char), attributes: baseAttributes)
+            attributedString.append(charString)
+            label.attributedText = attributedString
+
+            RunLoop.current.run(until: Date() + delayTime)
         }
     }
 }
