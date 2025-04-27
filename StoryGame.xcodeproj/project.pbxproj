@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		D90280EA2DB8B72500DDD755 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90280E92DB8B72500DDD755 /* GameModel.swift */; };
 		D90280EE2DBB5F0300DDD755 /* PressStart2P-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D90280ED2DBB5F0300DDD755 /* PressStart2P-Regular.ttf */; };
+		D90280F12DBCCD8C00DDD755 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90280F02DBCCD8C00DDD755 /* HomeVC.swift */; };
 		D962D4572DB8B4E6001C7D70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D962D4562DB8B4E6001C7D70 /* AppDelegate.swift */; };
-		D962D45B2DB8B4E6001C7D70 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D962D45A2DB8B4E6001C7D70 /* GameViewController.swift */; };
+		D962D45B2DB8B4E6001C7D70 /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D962D45A2DB8B4E6001C7D70 /* GameVC.swift */; };
 		D962D4602DB8B4E7001C7D70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D962D45F2DB8B4E7001C7D70 /* Assets.xcassets */; };
 		D962D4632DB8B4E7001C7D70 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = D962D4622DB8B4E7001C7D70 /* Base */; };
 /* End PBXBuildFile section */
@@ -18,9 +19,10 @@
 /* Begin PBXFileReference section */
 		D90280E92DB8B72500DDD755 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		D90280ED2DBB5F0300DDD755 /* PressStart2P-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PressStart2P-Regular.ttf"; sourceTree = "<group>"; };
+		D90280F02DBCCD8C00DDD755 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		D962D4532DB8B4E6001C7D70 /* StoryGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoryGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D962D4562DB8B4E6001C7D70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D962D45A2DB8B4E6001C7D70 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		D962D45A2DB8B4E6001C7D70 /* GameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
 		D962D45F2DB8B4E7001C7D70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D962D4622DB8B4E7001C7D70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D962D4642DB8B4E7001C7D70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -55,6 +57,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		D90280EF2DBCCD6800DDD755 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D962D45A2DB8B4E6001C7D70 /* GameVC.swift */,
+				D90280F02DBCCD8C00DDD755 /* HomeVC.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		D962D44A2DB8B4E6001C7D70 = {
 			isa = PBXGroup;
 			children = (
@@ -74,10 +85,10 @@
 		D962D4552DB8B4E6001C7D70 /* StoryGame */ = {
 			isa = PBXGroup;
 			children = (
+				D90280EF2DBCCD6800DDD755 /* Controllers */,
 				D90280EC2DBB5E5900DDD755 /* Models */,
 				D90280EB2DBB5E3D00DDD755 /* Supporting */,
 				D962D4562DB8B4E6001C7D70 /* AppDelegate.swift */,
-				D962D45A2DB8B4E6001C7D70 /* GameViewController.swift */,
 				D962D4642DB8B4E7001C7D70 /* Info.plist */,
 			);
 			path = StoryGame;
@@ -154,7 +165,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D962D45B2DB8B4E6001C7D70 /* GameViewController.swift in Sources */,
+				D962D45B2DB8B4E6001C7D70 /* GameVC.swift in Sources */,
+				D90280F12DBCCD8C00DDD755 /* HomeVC.swift in Sources */,
 				D962D4572DB8B4E6001C7D70 /* AppDelegate.swift in Sources */,
 				D90280EA2DB8B72500DDD755 /* GameModel.swift in Sources */,
 			);

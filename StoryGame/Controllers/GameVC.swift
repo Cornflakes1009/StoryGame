@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  GameVC.swift
 //  StoryGame
 //
 //  Created by Harold Davidson on 4/22/25.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GameViewController: UIViewController {
+class GameVC: UIViewController {
 
     let storyLabel = UILabel()
     let optionsStack = UIStackView()
@@ -18,8 +18,6 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .black
         setupUI()
-        
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -29,7 +27,6 @@ class GameViewController: UIViewController {
     func setupUI() {
         storyLabel.numberOfLines = 0
         storyLabel.textColor = .white
-        //storyLabel.font = UIFont.monospacedSystemFont(ofSize: 18, weight: .regular)
         storyLabel.font = UIFont(name: "PressStart2P-Regular", size: 14)
 
         storyLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -62,10 +59,26 @@ class GameViewController: UIViewController {
         for option in scene.options {
             let button = UIButton(type: .system)
             button.setTitle(option.title, for: .normal)
+            
+            button.titleLabel?.numberOfLines = 0
+            button.titleLabel?.lineBreakMode = .byWordWrapping
+            button.titleLabel?.textAlignment = .center // optional, center-align the text nicely
+
+            button.titleLabel?.adjustsFontSizeToFitWidth = false
+            button.titleLabel?.minimumScaleFactor = 1.0
+
             button.titleLabel?.font = UIFont.monospacedSystemFont(ofSize: 18, weight: .medium)
             button.backgroundColor = .darkGray
             button.setTitleColor(.white, for: .normal)
             button.layer.cornerRadius = 8
+            
+            button.translatesAutoresizingMaskIntoConstraints = false
+            button.heightAnchor.constraint(greaterThanOrEqualToConstant: 44).isActive = true // minimum height for button
+            button.titleLabel?.leadingAnchor.constraint(equalTo: button.leadingAnchor, constant: 10).isActive = true
+            button.titleLabel?.trailingAnchor.constraint(equalTo: button.trailingAnchor, constant: -10).isActive = true
+            button.titleLabel?.topAnchor.constraint(equalTo: button.topAnchor, constant: 10).isActive = true
+            button.titleLabel?.bottomAnchor.constraint(equalTo: button.bottomAnchor, constant: -10).isActive = true
+
             button.addAction(UIAction { [weak self] _ in
                 self?.showScene(id: option.nextSceneID)
             }, for: .touchUpInside)
@@ -78,7 +91,7 @@ class GameViewController: UIViewController {
     
     func typeTextOnLabel(label: UILabel, text: String) {
         let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 12 // Adjust this value for line height
+        paragraphStyle.lineSpacing = 12
 
         let baseAttributes: [NSAttributedString.Key: Any] = [
             .font: label.font ?? UIFont.systemFont(ofSize: 14),
@@ -105,5 +118,3 @@ class GameViewController: UIViewController {
         }
     }
 }
-
-

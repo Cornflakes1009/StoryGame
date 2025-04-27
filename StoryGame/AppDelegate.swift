@@ -20,11 +20,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         let window = UIWindow(frame: UIScreen.main.bounds)
-        let vc = GameViewController()
-        window.rootViewController = vc
+        
+        let navController = UINavigationController(rootViewController: HomeVC())
+        
+        window.rootViewController = navController
         self.window = window
         window.makeKeyAndVisible()
         
         return true
     }
 }
+
