@@ -21,13 +21,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let window = UIWindow(frame: UIScreen.main.bounds)
         
-        let navController = UINavigationController(rootViewController: HomeVC())
+//        let navController = UINavigationController(rootViewController: HomeVC())
         
-        window.rootViewController = navController
+        let homeVC = HomeVC()
+        let baseNavigationController = SwipeNavigationController(rootViewController: homeVC)
+        baseNavigationController.navigationBar.barStyle = .black
+        
+        
+        window.rootViewController = baseNavigationController
         self.window = window
         window.makeKeyAndVisible()
         
         return true
+    }
+    
+    /// set orientations you want to be allowed in this property by default
+    var orientationLock = UIInterfaceOrientationMask.portrait
+    
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+            return self.orientationLock
     }
 }
 
