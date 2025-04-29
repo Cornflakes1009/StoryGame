@@ -34,10 +34,11 @@ class HomeVC: UIViewController {
         setUpViews()
         playLabel.startBlink()
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(true, animated: animated)
+        //navigationController?.setNavigationBarHidden(true, animated: animated)
         // this is to handle dismissing any view controller back to this one
         playLabel.startBlink()
     }
@@ -50,12 +51,6 @@ class HomeVC: UIViewController {
         playLabel.stopBlink()
         playLabel.startBlink()
     }
-    
-    
-    
-    
-    
-    
     
     fileprivate func setUpViews() {
         view.backgroundColor = .black
@@ -73,7 +68,6 @@ class HomeVC: UIViewController {
         
         let startBtnImageConfig = UIImage.SymbolConfiguration(pointSize: 100, weight: .light, scale: .large)
         let startBtnImage = UIImage(systemName: "play.circle", withConfiguration: startBtnImageConfig)
-        startBtn.addTarget(nil, action: #selector(startBtnTapped), for: .touchUpInside)
         startBtn.setImage(startBtnImage, for: .normal)
         
         NSLayoutConstraint.activate([

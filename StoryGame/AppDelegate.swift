@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let homeVC = HomeVC()
         let baseNavigationController = SwipeNavigationController(rootViewController: homeVC)
         baseNavigationController.navigationBar.barStyle = .black
-        
+        UINavigationBar.appearance().tintColor = .white
         
         window.rootViewController = baseNavigationController
         self.window = window

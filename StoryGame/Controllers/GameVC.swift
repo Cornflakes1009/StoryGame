@@ -18,10 +18,12 @@ class GameVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .black
         setupUI()
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         showScene(id: currentSceneID)
+        
     }
 
     func setupUI() {
@@ -86,10 +88,13 @@ class GameVC: UIViewController {
             optionsStack.addArrangedSubview(button)
         }
         
-        typeTextOnLabel(label: storyLabel, text: scene.text)
+        optionsStack.arrangedSubviews.forEach({ $0.isUserInteractionEnabled = false })
+        typeTextOnLabel(label: storyLabel, text: scene.text, completion: {
+            self.optionsStack.arrangedSubviews.forEach({ $0.isUserInteractionEnabled = true })
+        })
     }
     
-    func typeTextOnLabel(label: UILabel, text: String) {
+    func typeTextOnLabel(label: UILabel, text: String, completion: @escaping () -> Void) {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 12
 
@@ -101,20 +106,59 @@ class GameVC: UIViewController {
 
         let attributedString = NSMutableAttributedString()
 
-        for char in text {
-            var delayTime = 0.03
+        DispatchQueue.global(qos: .userInitiated).async {
+            for (index, char) in text.enumerated() {
+                var delayTime = 0.03
 
-            if char == " " {
-                delayTime = 0.12
-            } else if [".", ",", "!", "?", "$"].contains(char) {
-                delayTime = 0.35
+                if char == " " {
+                    delayTime = 0.12
+                } else if [".", ",", "!", "?", "$"].contains(char) {
+                    delayTime = 0.35
+                }
+
+                DispatchQueue.main.async {
+                    let charString = NSAttributedString(string: String(char), attributes: baseAttributes)
+                    attributedString.append(charString)
+                    label.attributedText = attributedString
+                }
+
+                Thread.sleep(forTimeInterval: delayTime)
+
+                if index == text.count - 1 {
+                    // Last character, call completion on main thread
+                    DispatchQueue.main.async {
+                        completion()
+                    }
+                }
             }
-
-            let charString = NSAttributedString(string: String(char), attributes: baseAttributes)
-            attributedString.append(charString)
-            label.attributedText = attributedString
-
-            RunLoop.current.run(until: Date() + delayTime)
         }
     }
+//    func typeTextOnLabel(label: UILabel, text: String) {
+//        let paragraphStyle = NSMutableParagraphStyle()
+//        paragraphStyle.lineSpacing = 12
+//
+//        let baseAttributes: [NSAttributedString.Key: Any] = [
+//            .font: label.font ?? UIFont.systemFont(ofSize: 14),
+//            .foregroundColor: label.textColor ?? .white,
+//            .paragraphStyle: paragraphStyle
+//        ]
+//
+//        let attributedString = NSMutableAttributedString()
+//
+//        for char in text {
+//            var delayTime = 0.03
+//
+//            if char == " " {
+//                delayTime = 0.12
+//            } else if [".", ",", "!", "?", "$"].contains(char) {
+//                delayTime = 0.35
+//            }
+//
+//            let charString = NSAttributedString(string: String(char), attributes: baseAttributes)
+//            attributedString.append(charString)
+//            label.attributedText = attributedString
+//
+//            RunLoop.current.run(until: Date() + delayTime)
+//        }
+//    }
 }
