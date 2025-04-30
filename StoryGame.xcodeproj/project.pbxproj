@@ -11,6 +11,7 @@
 		D90280EE2DBB5F0300DDD755 /* PressStart2P-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D90280ED2DBB5F0300DDD755 /* PressStart2P-Regular.ttf */; };
 		D90280F12DBCCD8C00DDD755 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90280F02DBCCD8C00DDD755 /* HomeVC.swift */; };
 		D90280F42DBF53F700DDD755 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90280F32DBF53F700DDD755 /* Extensions.swift */; };
+		D90280F82DC1EF1500DDD755 /* background_music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D90280F72DC1EF1500DDD755 /* background_music.mp3 */; };
 		D962D4572DB8B4E6001C7D70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D962D4562DB8B4E6001C7D70 /* AppDelegate.swift */; };
 		D962D45B2DB8B4E6001C7D70 /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D962D45A2DB8B4E6001C7D70 /* GameVC.swift */; };
 		D962D4602DB8B4E7001C7D70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D962D45F2DB8B4E7001C7D70 /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 		D90280ED2DBB5F0300DDD755 /* PressStart2P-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PressStart2P-Regular.ttf"; sourceTree = "<group>"; };
 		D90280F02DBCCD8C00DDD755 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		D90280F32DBF53F700DDD755 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		D90280F72DC1EF1500DDD755 /* background_music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background_music.mp3; sourceTree = "<group>"; };
 		D962D4532DB8B4E6001C7D70 /* StoryGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoryGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D962D4562DB8B4E6001C7D70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D962D45A2DB8B4E6001C7D70 /* GameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
@@ -46,6 +48,7 @@
 			children = (
 				D90280ED2DBB5F0300DDD755 /* PressStart2P-Regular.ttf */,
 				D962D4612DB8B4E7001C7D70 /* LaunchScreen.storyboard */,
+				D90280F72DC1EF1500DDD755 /* background_music.mp3 */,
 				D962D45F2DB8B4E7001C7D70 /* Assets.xcassets */,
 			);
 			path = Supporting;
@@ -165,6 +168,7 @@
 			files = (
 				D90280EE2DBB5F0300DDD755 /* PressStart2P-Regular.ttf in Resources */,
 				D962D4602DB8B4E7001C7D70 /* Assets.xcassets in Resources */,
+				D90280F82DC1EF1500DDD755 /* background_music.mp3 in Resources */,
 				D962D4632DB8B4E7001C7D70 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

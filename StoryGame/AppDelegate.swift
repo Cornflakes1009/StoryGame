@@ -6,6 +6,11 @@
 //
 
 import UIKit
+import AVFoundation
+
+var backgroundMusic: AVAudioPlayer?
+let path = Bundle.main.path(forResource: "background_music.mp3", ofType:nil)!
+let url = URL(fileURLWithPath: path)
 
 // 1. Delete Main Storyboard
 // 2. Project > Info > delete Scene Manifest
@@ -21,8 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let window = UIWindow(frame: UIScreen.main.bounds)
         
-//        let navController = UINavigationController(rootViewController: HomeVC())
-        
         let homeVC = HomeVC()
         let baseNavigationController = SwipeNavigationController(rootViewController: homeVC)
         baseNavigationController.navigationBar.barStyle = .black
@@ -32,6 +35,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = window
         window.makeKeyAndVisible()
         
+        // MARK: - Audio
+        do {
+            backgroundMusic = try AVAudioPlayer(contentsOf: url)
+            backgroundMusic?.numberOfLoops = -1
+            backgroundMusic?.play()
+        } catch {
+            // couldn't load file :(
+            print("failed")
+        }
         return true
     }
     
