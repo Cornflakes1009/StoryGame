@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import AVFoundation
 
 class HomeVC: UIViewController {
 
+    var player = AVAudioPlayer()
+    
     let titleLbl = UILabel()
     lazy var startBtn: UIButton = {
         let button = UIButton(type: .system)
@@ -87,7 +90,12 @@ class HomeVC: UIViewController {
     
     // Actions
     @objc func startBtnTapped() {
-        let vc = GameVC()
-        self.navigationController?.pushViewController(vc, animated: true)
+        do {
+            player = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "play_tapped", ofType: "mp3")!))
+            player.play()
+        } catch {
+            print("Issue playing play_tapped.mp3")
+        }
+        self.navigationController?.pushViewController(GameVC(), animated: true)
     }
 }

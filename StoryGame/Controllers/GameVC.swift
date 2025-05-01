@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import AVFoundation
 
 class GameVC: UIViewController {
 
+    var player = AVAudioPlayer()
+    
     let storyLabel = UILabel()
     let optionsStack = UIStackView()
 
@@ -83,6 +86,13 @@ class GameVC: UIViewController {
 
             button.addAction(UIAction { [weak self] _ in
                 self?.showScene(id: option.nextSceneID)
+                // audio
+                do {
+                    self?.player = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "story_option_tapped", ofType: "mp3")!))
+                    self?.player.play()
+                } catch {
+                    print("Issue playing play_tapped.mp3")
+                }
             }, for: .touchUpInside)
 
             optionsStack.addArrangedSubview(button)

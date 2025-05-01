@@ -296,21 +296,6 @@ func printAllFonts() {
 extension UIButton {
     public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
-//        var buttonMusic: AVAudioPlayer?
-//        let path = Bundle.main.path(forResource: "button_click.mp3", ofType:nil)!
-//        let url = URL(fileURLWithPath: path)
-//
-//        do {
-//            buttonMusic = try AVAudioPlayer(contentsOf: url)
-//            //backgroundMusic?.pause()
-//            buttonMusic?.play()
-//            //backgroundMusic?.play()
-//            print("played")
-//        } catch {
-//            // couldn't load file :(
-//            print("failed")
-//        }
-//
         vibrate()
     }
 }
