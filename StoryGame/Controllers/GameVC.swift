@@ -39,6 +39,7 @@ class GameVC: UIViewController {
         optionsStack.axis = .vertical
         optionsStack.spacing = 12
         optionsStack.translatesAutoresizingMaskIntoConstraints = false
+        optionsStack.alpha = 0
 
         view.addSubview(storyLabel)
         view.addSubview(optionsStack)
@@ -96,11 +97,19 @@ class GameVC: UIViewController {
             }, for: .touchUpInside)
 
             optionsStack.addArrangedSubview(button)
+           
+            UIView.animate(withDuration: 3.3) {
+                self.optionsStack.alpha = 1
+            }
         }
         
+        optionsStack.alpha = 0
         optionsStack.arrangedSubviews.forEach({ $0.isUserInteractionEnabled = false })
         typeTextOnLabel(label: storyLabel, text: scene.text, completion: {
             self.optionsStack.arrangedSubviews.forEach({ $0.isUserInteractionEnabled = true })
+            UIView.animate(withDuration: 0.3) {
+                self.optionsStack.alpha = 1
+            }
         })
     }
     
