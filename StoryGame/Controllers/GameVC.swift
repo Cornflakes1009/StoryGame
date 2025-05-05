@@ -57,9 +57,14 @@ class GameVC: UIViewController {
 
     func showScene(id: String) {
         guard let scene = scenes[id] else { return }
-
         currentSceneID = id
-
+        optionsStack.alpha = 0
+        typeTextOnLabel(label: storyLabel, text: scene.text, completion: {
+            self.showOptions(scene: scene)
+        })
+    }
+    
+    func showOptions(scene: GameScene) {
         optionsStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
 
         for option in scene.options {
@@ -98,19 +103,10 @@ class GameVC: UIViewController {
 
             optionsStack.addArrangedSubview(button)
            
-            UIView.animate(withDuration: 3.3) {
+            UIView.animate(withDuration: 0.5) {
                 self.optionsStack.alpha = 1
             }
         }
-        
-        optionsStack.alpha = 0
-        optionsStack.arrangedSubviews.forEach({ $0.isUserInteractionEnabled = false })
-        typeTextOnLabel(label: storyLabel, text: scene.text, completion: {
-            self.optionsStack.arrangedSubviews.forEach({ $0.isUserInteractionEnabled = true })
-            UIView.animate(withDuration: 0.3) {
-                self.optionsStack.alpha = 1
-            }
-        })
     }
     
     func typeTextOnLabel(label: UILabel, text: String, completion: @escaping () -> Void) {
