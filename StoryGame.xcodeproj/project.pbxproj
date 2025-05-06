@@ -14,6 +14,9 @@
 		D90280F82DC1EF1500DDD755 /* background_music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D90280F72DC1EF1500DDD755 /* background_music.mp3 */; };
 		D90280FB2DC1F0D700DDD755 /* play_tapped.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D90280F92DC1F0D700DDD755 /* play_tapped.mp3 */; };
 		D90280FC2DC1F0D700DDD755 /* story_option_tapped.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D90280FA2DC1F0D700DDD755 /* story_option_tapped.mp3 */; };
+		D94632E42DC9E7850022A7E4 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94632E32DC9E7850022A7E4 /* SettingsVC.swift */; };
+		D94632E72DC9E8470022A7E4 /* SettingsSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94632E62DC9E8470022A7E4 /* SettingsSwitchCell.swift */; };
+		D94632E92DC9E8590022A7E4 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94632E82DC9E8590022A7E4 /* SettingsCell.swift */; };
 		D962D4572DB8B4E6001C7D70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D962D4562DB8B4E6001C7D70 /* AppDelegate.swift */; };
 		D962D45B2DB8B4E6001C7D70 /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D962D45A2DB8B4E6001C7D70 /* GameVC.swift */; };
 		D962D4602DB8B4E7001C7D70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D962D45F2DB8B4E7001C7D70 /* Assets.xcassets */; };
@@ -28,6 +31,9 @@
 		D90280F72DC1EF1500DDD755 /* background_music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background_music.mp3; sourceTree = "<group>"; };
 		D90280F92DC1F0D700DDD755 /* play_tapped.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = play_tapped.mp3; sourceTree = "<group>"; };
 		D90280FA2DC1F0D700DDD755 /* story_option_tapped.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = story_option_tapped.mp3; sourceTree = "<group>"; };
+		D94632E32DC9E7850022A7E4 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		D94632E62DC9E8470022A7E4 /* SettingsSwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSwitchCell.swift; sourceTree = "<group>"; };
+		D94632E82DC9E8590022A7E4 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		D962D4532DB8B4E6001C7D70 /* StoryGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoryGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D962D4562DB8B4E6001C7D70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D962D45A2DB8B4E6001C7D70 /* GameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
@@ -73,6 +79,7 @@
 			children = (
 				D962D45A2DB8B4E6001C7D70 /* GameVC.swift */,
 				D90280F02DBCCD8C00DDD755 /* HomeVC.swift */,
+				D94632E32DC9E7850022A7E4 /* SettingsVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -83,6 +90,15 @@
 				D90280F32DBF53F700DDD755 /* Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D94632E52DC9E8390022A7E4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D94632E62DC9E8470022A7E4 /* SettingsSwitchCell.swift */,
+				D94632E82DC9E8590022A7E4 /* SettingsCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		D962D44A2DB8B4E6001C7D70 = {
@@ -104,6 +120,7 @@
 		D962D4552DB8B4E6001C7D70 /* StoryGame */ = {
 			isa = PBXGroup;
 			children = (
+				D94632E52DC9E8390022A7E4 /* Views */,
 				D90280F22DBF53EB00DDD755 /* Extensions */,
 				D90280EF2DBCCD6800DDD755 /* Controllers */,
 				D90280EC2DBB5E5900DDD755 /* Models */,
@@ -190,9 +207,12 @@
 			files = (
 				D90280F42DBF53F700DDD755 /* Extensions.swift in Sources */,
 				D962D45B2DB8B4E6001C7D70 /* GameVC.swift in Sources */,
+				D94632E72DC9E8470022A7E4 /* SettingsSwitchCell.swift in Sources */,
 				D90280F12DBCCD8C00DDD755 /* HomeVC.swift in Sources */,
 				D962D4572DB8B4E6001C7D70 /* AppDelegate.swift in Sources */,
 				D90280EA2DB8B72500DDD755 /* GameModel.swift in Sources */,
+				D94632E92DC9E8590022A7E4 /* SettingsCell.swift in Sources */,
+				D94632E42DC9E7850022A7E4 /* SettingsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

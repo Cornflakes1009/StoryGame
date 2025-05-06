@@ -7,6 +7,7 @@
 
 import UIKit
 import AVFoundation
+import StoreKit
 
 // MARK:- RGB
 // Simplifying UIColor.rgb. Removes the need to /255 and alpha value.
@@ -491,3 +492,33 @@ extension UILabel {
     }
 }
 
+// MARK: - Get App Info: Version and Build
+extension UIApplication {
+    struct Constants {
+        static let CFBundleShortVersionString = "CFBundleShortVersionString"
+    }
+    class func appVersion() -> String {
+        return Bundle.main.object(forInfoDictionaryKey: Constants.CFBundleShortVersionString) as! String
+    }
+  
+    class func appBuild() -> String {
+        return Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as! String
+    }
+  
+    class func versionBuild() -> String {
+        let version = appVersion(), build = appBuild()
+      
+        return version == build ? "v\(version)" : "v\(version)(\(build))"
+    }
+}
+
+// MARK: - Request Review
+extension SKStoreReviewController {
+    public static func requestReviewInCurrentScene() {
+        if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
+            DispatchQueue.main.async {
+                requestReview(in: scene)
+            }
+        }
+    }
+}
