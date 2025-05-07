@@ -12,6 +12,7 @@ class GameVC: UIViewController {
 
     var player = AVAudioPlayer()
     
+    fileprivate let helpButton = HelpButton()
     let storyLabel = UILabel()
     let optionsStack = UIStackView()
 
@@ -30,6 +31,7 @@ class GameVC: UIViewController {
     }
 
     func setupUI() {
+        helpButton.delegate = self
         storyLabel.numberOfLines = 0
         storyLabel.textColor = .white
         storyLabel.font = UIFont(name: "PressStart2P-Regular", size: 14)
@@ -41,11 +43,17 @@ class GameVC: UIViewController {
         optionsStack.translatesAutoresizingMaskIntoConstraints = false
         optionsStack.alpha = 0
 
+        view.addSubview(helpButton)
         view.addSubview(storyLabel)
         view.addSubview(optionsStack)
 
         NSLayoutConstraint.activate([
-            storyLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            helpButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
+            helpButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20),
+            helpButton.heightAnchor.constraint(equalToConstant: 50),
+            helpButton.widthAnchor.constraint(equalToConstant: 50),
+            
+            storyLabel.topAnchor.constraint(equalTo: helpButton.bottomAnchor, constant: 20),
             storyLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             storyLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
 
@@ -176,4 +184,11 @@ class GameVC: UIViewController {
 //            RunLoop.current.run(until: Date() + delayTime)
 //        }
 //    }
+}
+
+extension GameVC: HelpButtonDelegate {
+    func helpButtonTapped() {
+        let vc = SettingsVC()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
