@@ -48,7 +48,7 @@ class GameVC: UIViewController {
         view.addSubview(optionsStack)
 
         NSLayoutConstraint.activate([
-            helpButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
+            helpButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
             helpButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20),
             helpButton.heightAnchor.constraint(equalToConstant: 50),
             helpButton.widthAnchor.constraint(equalToConstant: 50),
