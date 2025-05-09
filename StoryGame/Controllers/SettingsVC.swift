@@ -14,7 +14,7 @@ import StoreKit
 class SettingsVC: UIViewController, MFMailComposeViewControllerDelegate {
 
     fileprivate var player: AVPlayer?
-//    fileprivate let backButton = BackButton()
+    fileprivate let backButton = BackButton()
     
     var tableView = {
         let table = UITableView()
@@ -94,10 +94,10 @@ class SettingsVC: UIViewController, MFMailComposeViewControllerDelegate {
             self.view.addSubview(view)
         }
         NSLayoutConstraint.activate([
-//            backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
-//            backButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
-//            backButton.heightAnchor.constraint(equalToConstant: 50),
-//            backButton.widthAnchor.constraint(equalToConstant: 50),
+            backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
+            backButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
+            backButton.heightAnchor.constraint(equalToConstant: 50),
+            backButton.widthAnchor.constraint(equalToConstant: 50),
             
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
@@ -227,11 +227,11 @@ class SettingsVC: UIViewController, MFMailComposeViewControllerDelegate {
     }
 }
 
-//extension SettingsVC: BackButtonDelegate {
-//    func backButtonTapped() {
-//        self.navigationController?.popViewController(animated: true)
-//    }
-//}
+extension SettingsVC: BackButtonDelegate {
+    func backButtonTapped() {
+        self.navigationController?.popViewController(animated: true)
+    }
+}
 
 extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
