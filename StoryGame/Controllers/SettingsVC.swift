@@ -84,11 +84,11 @@ class SettingsVC: UIViewController, MFMailComposeViewControllerDelegate {
     
     fileprivate func setUpUI() {
 //        playBackgroundVideo()
-//        backButton.delegate = self
+        backButton.delegate = self
         configureTableView()
         
         let views = [
-            //backButton,
+            backButton,
             tableView]
         for view in views {
             self.view.addSubview(view)
