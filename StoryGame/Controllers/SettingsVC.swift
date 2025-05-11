@@ -71,7 +71,7 @@ class SettingsVC: UIViewController, MFMailComposeViewControllerDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     @objc func appMovedToBackground() {
@@ -83,7 +83,6 @@ class SettingsVC: UIViewController, MFMailComposeViewControllerDelegate {
     }
     
     fileprivate func setUpUI() {
-//        playBackgroundVideo()
         backButton.delegate = self
         configureTableView()
         
@@ -99,7 +98,7 @@ class SettingsVC: UIViewController, MFMailComposeViewControllerDelegate {
             backButton.heightAnchor.constraint(equalToConstant: 50),
             backButton.widthAnchor.constraint(equalToConstant: 50),
             
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
+            tableView.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 0),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
             tableView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0),
             tableView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0),
@@ -113,25 +112,6 @@ class SettingsVC: UIViewController, MFMailComposeViewControllerDelegate {
         tableView.register(SettingsCell.self, forCellReuseIdentifier: "SettingsCell")
         tableView.backgroundColor = .clear
     }
-    
-//    // MARK: - Background Video
-//    func playBackgroundVideo() {
-//        if AppConstants.backgroundVideo != "" {
-//            let filePath = Bundle.main.path(forResource: AppConstants.backgroundVideo, ofType: ".mp4")
-//            if let path = filePath {
-//                player = AVPlayer(url: URL(fileURLWithPath: path))
-//                player!.actionAtItemEnd = AVPlayer.ActionAtItemEnd.none
-//                let playerLayer = AVPlayerLayer(player: player)
-//                playerLayer.frame = self.view.frame
-//                playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
-//                self.view.layer.insertSublayer(playerLayer, at: 0)
-//                NotificationCenter.default.addObserver(self, selector: #selector(playerItemDidReachEnd), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: player!.currentItem)
-//                player!.seek(to: CMTime.zero)
-//                player!.play()
-//                player?.isMuted = true
-//            }
-//        }
-//    }
     
     @objc func playerItemDidReachEnd() {
         player!.seek(to: CMTime.zero)
@@ -294,6 +274,7 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 40))
         let lbl = UILabel(frame: CGRect(x: 15, y: 0, width: view.frame.width - 15, height: 40))
         lbl.font = UIFont.boldSystemFont(ofSize: 20)
+        lbl.textColor = .white
         lbl.text = sections[section]
         //lbl.textColor = AppConstants.labelColor
         view.backgroundColor = UIColor.rgb(red: 0, green: 0, blue: 0, alpha: 1)
