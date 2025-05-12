@@ -12,6 +12,7 @@ class GameVC: UIViewController {
 
     var player = AVAudioPlayer()
     
+    fileprivate let backButton = BackButton()
     fileprivate let helpButton = HelpButton()
     let storyLabel = UILabel()
     let optionsStack = UIStackView()
@@ -22,7 +23,7 @@ class GameVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .black
         setupUI()
-        navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -31,6 +32,7 @@ class GameVC: UIViewController {
     }
 
     func setupUI() {
+        backButton.delegate = self
         helpButton.delegate = self
         storyLabel.numberOfLines = 0
         storyLabel.textColor = .white
@@ -43,11 +45,17 @@ class GameVC: UIViewController {
         optionsStack.translatesAutoresizingMaskIntoConstraints = false
         optionsStack.alpha = 0
 
+        view.addSubview(backButton)
         view.addSubview(helpButton)
         view.addSubview(storyLabel)
         view.addSubview(optionsStack)
 
         NSLayoutConstraint.activate([
+            backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
+            backButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
+            backButton.heightAnchor.constraint(equalToConstant: 50),
+            backButton.widthAnchor.constraint(equalToConstant: 50),
+            
             helpButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
             helpButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20),
             helpButton.heightAnchor.constraint(equalToConstant: 50),
@@ -184,6 +192,12 @@ class GameVC: UIViewController {
 //            RunLoop.current.run(until: Date() + delayTime)
 //        }
 //    }
+}
+
+extension GameVC: BackButtonDelegate {
+    func backButtonTapped() {
+        self.navigationController?.popViewController(animated: true)
+    }
 }
 
 extension GameVC: HelpButtonDelegate {
