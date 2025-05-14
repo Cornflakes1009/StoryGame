@@ -287,7 +287,7 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
         switch item.navigation {
         case .checkOutOtherApps:
             vibrate()
-            let vc = UIViewController()
+            let vc = OtherAppsVC()
             self.navigationController?.pushViewController(vc, animated: true)
         case .rating:
             vibrate()
