@@ -11,7 +11,7 @@ import AVFoundation
 
 class OtherAppsVC: UIViewController {
     
-    let otherApps = [OtherApps(name: "Iron Throne Trivia", url: "https://apps.apple.com/us/app/iron-throne-trivia/id1543810844", image: "Iron Throne Trivia"), OtherApps(name: "Weeb", url: "https://apps.apple.com/us/app/weeb/id1570239237", image: "Weeb")]
+    let otherApps = [OtherApps(name: "TriwizardTrivia", url: "https://apps.apple.com/us/app/triwizardtrivia/id1499282472", image: "TriwizardTrivia"), OtherApps(name: "Iron Throne Trivia", url: "https://apps.apple.com/us/app/iron-throne-trivia/id1543810844", image: "Iron Throne Trivia"), OtherApps(name: "Weeb", url: "https://apps.apple.com/us/app/weeb/id1570239237", image: "Weeb")]
     fileprivate var player: AVPlayer?
     fileprivate let backButton = BackButton()
     
