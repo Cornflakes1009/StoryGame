@@ -29,7 +29,8 @@ class SettingsVC: UIViewController, MFMailComposeViewControllerDelegate {
                     ],
                     [SectionCells(title: "Check Out My Other Apps", cell: (.SettingsCellNoSelectionStyle, 0), navigation: .checkOutOtherApps),
                      SectionCells(title: "Rate this App!", cell: (.SettingsCellNoSelectionStyle, 0), navigation: .rating),
-                     SectionCells(title: "Share", cell: (.SettingsCellNoSelectionStyle, 0), navigation: .share)],
+                     //SectionCells(title: "Share", cell: (.SettingsCellNoSelectionStyle, 0), navigation: .share)
+                    ],
                     
                     [SectionCells(title: "Email Us", cell: (.SettingsCellNoSelectionStyle, 0), navigation: .contact),
                      SectionCells(title: "Find us on Facebook", cell: (.SettingsCellNoSelectionStyle, 0), navigation: .facebook)],
